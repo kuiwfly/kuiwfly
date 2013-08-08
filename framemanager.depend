@@ -13,3 +13,14 @@
 1375952873 source:c:\users\kuiw\desktop\workspace\framemanager\frame.cpp
 	"frame.h"
 
+1375964274 source:g:\projectdb\workspace\kuiwfly\main.cpp
+	<iostream>
+	"frame.h"
+
+1375964274 g:\projectdb\workspace\kuiwfly\frame.h
+	"pthread.h"
+	"assert.h"
+
+1375964274 source:g:\projectdb\workspace\kuiwfly\frame.cpp
+	"frame.h"
+

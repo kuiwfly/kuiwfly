@@ -20,6 +20,7 @@ int init_frame_list(struct frame_list_t *list,int max_size){
     }
     list->i_max_size = max_size ;
     list->i_size = 0 ;
+    list->list = (struct frame_t **)malloc(sizeof(struct frame_t*)*(max_size+1)) ;
     if(pthread_mutex_init(&list->mutex,NULL)||
        pthread_cond_init(&list->cond_empty,NULL)||
        pthread_cond_init(&list->cond_full,NULL)){
@@ -36,10 +37,10 @@ void delete_frame_list(struct frame_list_t *list) {
     pthread_cond_destroy(&list->cond_full) ;
 
     while(list->list[i]){
-        delete_frame((&list->list[i++])) ;
+        delete_frame((list->list[i++])) ;
     }
-    free(list) ;
-    list = NULL ;
+    free(list->list) ;
+    list->list = NULL ;
 }
 void push_frame_list(struct frame_list_t *list,struct frame_t *frame) {
     pthread_mutex_lock(&list->mutex) ;
